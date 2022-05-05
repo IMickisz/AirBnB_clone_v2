@@ -14,11 +14,11 @@ def do_pack():
         local("mkdir versions/")
     try:
         file_path = "versions/web_static_{}{}{}{}{}{}.tgz".format(time("%Y"),
-                                                                   time("%m"),
-                                                                   time("%d"),
-                                                                   time("%H"),
-                                                                   time("%M"),
-                                                                   time("%S"))
+                                                                  time("%m"),
+                                                                  time("%d"),
+                                                                  time("%H"),
+                                                                  time("%M"),
+                                                                  time("%S"))
         local("tar -cvzf {} web_static".format(file_path))
         return file_path
     except Exception:
