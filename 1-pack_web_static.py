@@ -13,10 +13,10 @@ def do_pack():
     if path.exists("versions/") is False:
         local("mkdir versions/")
     try:
-        file = "versions/web_stastic_{}{}{}{}{}{}.tgz".format(
+        file_path = "versions/web_stastic_{}{}{}{}{}{}.tgz".format(
             date("%Y"), date("%m"), date("%d"), date("%H"), date("%M"),
             date("%S"))
         local("tar -cvzf {} web_static".format(file))
-        return file
+        return file_path
     except Exception:
         return None
