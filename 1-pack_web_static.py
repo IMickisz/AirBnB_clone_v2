@@ -14,7 +14,11 @@ def do_pack():
         local("mkdir versions/")
     try:
         file_path = "versions/web_stastic_{}{}{}{}{}{}.tgz".format(
-            date("%Y"), date("%m"), date("%d"), date("%H"), date("%M"),
+            date("%Y"),
+            date("%m"),
+            date("%d"),
+            date("%H"),
+            date("%M"),
             date("%S"))
         local("tar -cvzf {} web_static".format(file_path))
         return file_path
