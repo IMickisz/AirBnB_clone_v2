@@ -13,7 +13,7 @@ def do_pack():
     if path.exists("versions/") is False:
         local("mkdir versions/")
     try:
-        file_path = "versions/web_stastic_{}{}{}{}{}{}.tgz".format(time("%Y"),
+        file_path = "versions/web_static_{}{}{}{}{}{}.tgz".format(time("%Y"),
                                                                    time("%m"),
                                                                    time("%d"),
                                                                    time("%H"),
