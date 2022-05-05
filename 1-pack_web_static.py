@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module that contain the function do_pack
+Module that contains the do_pack function
 """
 
 from fabric.api import local

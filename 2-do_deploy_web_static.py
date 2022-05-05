@@ -25,6 +25,7 @@ def do_pack():
     except Exception:
         return None
 
+
 def do_deploy(archive_path):
     """Function that distributes an archive to your web servers"""
     if path.exists(archive_path) is False:
@@ -34,14 +35,14 @@ def do_deploy(archive_path):
         file_name = archive_path.split("/")
         put("{}/{}".format(file_name[0], file_name[1]),
             "/tmp/{}".format(file_name[1]))
-        del_ext = file_name[1].split(".")
-        run("sudo mkdir -p {}/{}/".format(p, del_ext[0]))
-        run("tar -xzf /tmp/{} -C {}/{}/".format(file_name[1], p, del_ext[0]))
+        name = file_name[1].split(".")
+        run("sudo mkdir -p {}/{}/".format(p, name[0]))
+        run("tar -xzf /tmp/{} -C {}/{}/".format(file_name[1], p, name[0]))
         run("rm /tmp/{}".format(file_name[1]))
-        run("mv {}/{}/web_static/* {}/{}/".format(p, del_ext[0], p, del_ext[0]))
-        run("rm -rf {}/{}/web_static".format(p, del_ext[0]))
+        run("mv {}/{}/web_static/* {}/{}/".format(p, name[0], p, name[0]))
+        run("rm -rf {}/{}/web_static".format(p, name[0]))
         run("rm -rf /data/web_static/current")
-        run("ln -s {}/{}/ /data/web_static/current".format(p, del_ext[0]))
+        run("ln -s {}/{}/ /data/web_static/current".format(p, name[0]))
         return True
     except Exception:
         return False
