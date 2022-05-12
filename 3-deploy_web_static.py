@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module that contains the do_pack and do_deploy functions
+Module that contains the do_pack, do_deploy and deploy functions
 """
 
 from fabric.api import local, put, run, env
@@ -39,10 +39,18 @@ def do_deploy(archive_path):
         run("sudo mkdir -p {}/{}/".format(p, name[0]))
         run("tar -xzf /tmp/{} -C {}/{}/".format(file_name[1], p, name[0]))
         run("rm /tmp/{}".format(file_name[1]))
-        run("rsync {}/{}/web_static/* {}/{}/".format(p, name[0], p, name[0]))
+        run("mv {}/{}/web_static/* {}/{}/".format(p, name[0], p, name[0]))
         run("rm -rf {}/{}/web_static".format(p, name[0]))
         run("rm -rf /data/web_static/current")
         run("ln -s {}/{}/ /data/web_static/current".format(p, name[0]))
         return True
     except Exception:
         return False
+
+
+def deploy():
+    """Function that creates and distributes an archive to a web server"""
+    archive = do_pack()
+    if archive is None:
+        return False
+    return (do_deploy(archive))
