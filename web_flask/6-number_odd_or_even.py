@@ -52,7 +52,7 @@ def number_odd_or_even(n):
     """Returns a template if n is an interger at /number_odd_or_even/<n>
     route"""
     if type(n) == int:
-        return render_template('6-number.html', n=n)
+        return render_template('6-number_odd_or_even.html', n=n)
 
 
 if __name__ == '__main__':
