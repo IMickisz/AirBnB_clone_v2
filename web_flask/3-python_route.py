@@ -20,7 +20,16 @@ def hbnb_route():
 @app.route('/c/<text>', strict_slashes=False)
 def C_route(text):
     """Returns “C” followed by the value of the text variable at the
-    /c/<text> route"""
+    /c/<test> route"""
+    remove_ = text.replace('_', ' ')
+    return 'C %s' % remove_
+
+
+@app.route('/python', defaults={'text': 'is cool'}, strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def python_route(text):
+    """Returns “python” followed by the value of the text variable or "is cool"
+    by default at the /python/<text> route"""
     remove_ = text.replace('_', ' ')
     return 'C %s' % remove_
 
