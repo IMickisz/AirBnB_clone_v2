@@ -21,8 +21,7 @@ def hbnb_route():
 def C_route(text):
     """Returns “C” followed by the value of the text variable at the
     /c/<text> route"""
-    remove_ = text.replace('_', ' ')
-    return 'C %s' % remove_
+    return 'C %s' % text.replace('_', ' ')
 
 
 if __name__ == '__main__':

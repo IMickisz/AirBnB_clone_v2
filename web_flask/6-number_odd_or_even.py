@@ -2,6 +2,7 @@
 """Script that starts a Flask web application"""
 
 from flask import Flask
+from flask import render_template
 app = Flask(__name__)
 
 
@@ -37,6 +38,21 @@ def number_route(n):
     """Returns n if it is an interger at /number/<n> route"""
     if type(n) == int:
         return '%i is a number' % n
+
+
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def number_template_route(n):
+    """Returns a template if n is an interger at /number_template//<n> route"""
+    if type(n) == int:
+        return render_template('5-number.html', n=n)
+
+
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def number_odd_or_even(n):
+    """Returns a template if n is an interger at /number_odd_or_even/<n>
+    route"""
+    if type(n) == int:
+        return render_template('6-number.html', n=n)
 
 
 if __name__ == '__main__':
