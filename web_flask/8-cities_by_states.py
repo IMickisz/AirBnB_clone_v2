@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 @app.route('/cities_by_states', strict_slashes=False)
-def state_list_route():
+def city_by_state_route():
     """List all the State object alphabetically"""
     list_s = []
     dico = storage.all(State)
