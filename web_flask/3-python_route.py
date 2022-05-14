@@ -29,7 +29,7 @@ def C_route(text):
 def python_route(text):
     """Returns “python” followed by the value of the text variable or "is cool"
     by default at the /python/<text> route"""
-    return 'C %s' % text.replace('_', ' ')
+    return 'Python %s' % text.replace('_', ' ')
 
 
 if __name__ == '__main__':
